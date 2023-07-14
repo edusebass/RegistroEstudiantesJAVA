@@ -31,7 +31,6 @@ public class formulario {
 
     private int lineaActual = 1;
 
-
     public formulario() {
         guardarDatosEnDiscoButton.addActionListener(new ActionListener() {
             @Override
@@ -40,21 +39,19 @@ public class formulario {
 
                     FileWriter writer = new FileWriter("src/binary data.dat", true);
 
-
                     writer.write(codigotextField1.getText() + "," + cedulatextField2.getText() + "," + nombrestextField3.getText() + "," + apellidotextField4.getText() + "," +
                                   signocomboBox4.getSelectedItem() + "," + añocomboBox1.getSelectedItem() + "," + mescomboBox2.getSelectedItem() + "," + diacomboBox3.getSelectedItem()
                                 + "," + rojoCheckBox.getActionCommand() + "," +  verdeCheckBox.getActionCommand() + "," + ningunoCheckBox.getActionCommand() +
                                 "," + siRadioButton.getActionCommand() + "," + noRadioButton.getActionCommand() + "\n");
 
-
                     writer.close();
-
 
                     codigotextField1.setText("");
                     cedulatextField2.setText("");
                     nombrestextField3.setText("");
 
                     JOptionPane.showMessageDialog(null, "Los datos se han guardado correctamente.");
+
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
@@ -67,16 +64,14 @@ public class formulario {
 
                     Scanner scanner = new Scanner(new File("src/binary data.dat"));
 
-
                     String[] valores = scanner.nextLine().split(",");
-
 
                     textArea1.setText("ESTUDIANTE" + lineaActual + "\n" + "Codigo: " + (valores[0]) + "\n" + "Cedula: " + valores[1] + "\n" + "Nombres: " + valores[2] + "\n" + "Apellidos: " + valores[3] + "\n"
                             + "Signo: " + valores[4] + "\n" + "Fecha de nacimiento\n" + "Año: "+ valores[5] + "\n" + "Mes: " + valores[6] + "\n" + "Dia: " + valores[7] + "\n"
                             + "Color favorito\n" + valores[8]);
 
-                    // Cierra el objeto Scanner
                     scanner.close();
+
                 } catch (FileNotFoundException ex) {
                     ex.printStackTrace();
                 }
@@ -89,29 +84,23 @@ public class formulario {
 
                     Scanner scanner = new Scanner(new File("src/binary data.dat"));
 
-
                     for (int i = 1; i < lineaActual; i++) {
                         if (scanner.hasNextLine()) {
                             scanner.nextLine();
                         } else {
-
                             scanner = new Scanner(new File("src/binary data.dat"));
                             lineaActual = 1;
                             break;
                         }
                     }
 
-
                     if (scanner.hasNextLine()) {
                         String[] valores = scanner.nextLine().split(",");
-
                         textArea1.setText("ESTUDIANTE " + lineaActual + "\n" + "Codigo: " + (valores[0]) + "\n" + "Cedula: " + valores[1] + "\n" + "Nombres: " + valores[2] + "\n" + "Apellidos: " + valores[3] + "\n"
                                 + "Signo: " + valores[4] + "\n" + "Fecha de nacimiento\n" + "Año: "+ valores[5] + "\n" + "Mes: " + valores[6] + "\n" + "Dia: " + valores[7] + "\n"
                                 + "Color favorito\n" + valores[8]);
-
                         lineaActual++;
                     }
-
                     scanner.close();
                 } catch (FileNotFoundException ex) {
                     ex.printStackTrace();
@@ -128,7 +117,6 @@ public class formulario {
 
                     Scanner scanner = new Scanner(new File("src/binary data.dat"));
 
-                    // Lee las líneas del archivo hasta llegar a la línea actual
                     for (int i = 1; i < lineaActual; i++) {
                         scanner.nextLine();
                     }
