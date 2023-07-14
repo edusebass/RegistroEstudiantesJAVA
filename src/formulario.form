@@ -229,14 +229,6 @@
           <text value="no"/>
         </properties>
       </component>
-      <component id="acdcf" class="javax.swing.JTextPane" binding="muestratextPane1">
-        <constraints>
-          <grid row="3" column="4" row-span="2" col-span="2" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="50"/>
-          </grid>
-        </constraints>
-        <properties/>
-      </component>
       <component id="225b5" class="javax.swing.JButton" binding="verSiguienteRegistroButton" default-binding="true">
         <constraints>
           <grid row="5" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
@@ -297,6 +289,14 @@
             <item value="2004"/>
           </model>
         </properties>
+      </component>
+      <component id="848c6" class="javax.swing.JTextArea" binding="textArea1" default-binding="true">
+        <constraints>
+          <grid row="3" column="4" row-span="2" col-span="2" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="50"/>
+          </grid>
+        </constraints>
+        <properties/>
       </component>
     </children>
   </grid>

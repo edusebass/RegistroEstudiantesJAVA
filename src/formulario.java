@@ -3,6 +3,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 
 public class formulario {
     private JPanel rootpanel;
@@ -24,6 +28,7 @@ public class formulario {
     private JButton verSiguienteRegistroButton;
     private JRadioButton noRadioButton;
     private JComboBox signocomboBox4;
+    private JTextArea textArea1;
 
 
     public formulario() {
@@ -37,7 +42,8 @@ public class formulario {
                     // Escribe los datos ingresados en los JTextField en el archivo, separados por comas
                     writer.write(codigotextField1.getText() + "," + cedulatextField2.getText() + "," + nombrestextField3.getText() + "," + apellidotextField4.getText() + "," +
                                   signocomboBox4.getSelectedItem() + "," + añocomboBox1.getSelectedItem() + "," + mescomboBox2.getSelectedItem() + "," + diacomboBox3.getSelectedItem()
-                                + "," + rojoCheckBox.getSelectedIcon() + "\n");
+                                + "," + rojoCheckBox.getActionCommand() + "," +  verdeCheckBox.getActionCommand() + "," + ningunoCheckBox.getActionCommand() +
+                                "," + siRadioButton.getActionCommand() + "," + noRadioButton.getActionCommand() + "\n");
 
                     // Cierra el objeto FileWriter
                     writer.close();
@@ -49,6 +55,28 @@ public class formulario {
 
                     JOptionPane.showMessageDialog(null, "Los datos se han guardado correctamente.");
                 } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+        cargarDatosDesdeElButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    // Crea un objeto Scanner para leer el archivo de texto
+                    Scanner scanner = new Scanner(new File("src/binary data.dat"));
+
+                    // Lee la primera línea del archivo y separa los valores por comas
+                    String[] valores = scanner.nextLine().split(",");
+
+                    // Asigna los valores correspondientes a cada JLabel
+                    textArea1.setText("Codigo: " + (valores[0]) + "\n" + "Cedula: " + valores[1] + "\n" + "Nombres: " + valores[2] + "\n" + "Apellidos: " + valores[3] + "\n"
+                            + "Signo: " + valores[4] + "\n" + "Fecha de nacimiento\n" + "Año: "+ valores[5] + "\n" + "Mes: " + valores[6] + "\n" + "Dia: " + valores[7]
+                            + "Color favorito\n" + valores[8] + "\n" + "Casado: " + valores[9]);
+
+                    // Cierra el objeto Scanner
+                    scanner.close();
+                } catch (FileNotFoundException ex) {
                     ex.printStackTrace();
                 }
             }
