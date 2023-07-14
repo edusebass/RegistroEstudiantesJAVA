@@ -23,12 +23,13 @@ public class formulario {
     private JComboBox diacomboBox3;
     private JButton cargarDatosDesdeElButton;
     private JButton guardarDatosEnDiscoButton;
-    private JTextPane muestratextPane1;
     private JButton verAnteriorRegistroButton;
     private JButton verSiguienteRegistroButton;
     private JRadioButton noRadioButton;
     private JComboBox signocomboBox4;
     private JTextArea textArea1;
+
+    private int lineaActual = 1;
 
 
     public formulario() {
@@ -36,19 +37,19 @@ public class formulario {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    // Crea un objeto FileWriter para escribir en el archivo "datos.txt"
+
                     FileWriter writer = new FileWriter("src/binary data.dat", true);
 
-                    // Escribe los datos ingresados en los JTextField en el archivo, separados por comas
+
                     writer.write(codigotextField1.getText() + "," + cedulatextField2.getText() + "," + nombrestextField3.getText() + "," + apellidotextField4.getText() + "," +
                                   signocomboBox4.getSelectedItem() + "," + añocomboBox1.getSelectedItem() + "," + mescomboBox2.getSelectedItem() + "," + diacomboBox3.getSelectedItem()
                                 + "," + rojoCheckBox.getActionCommand() + "," +  verdeCheckBox.getActionCommand() + "," + ningunoCheckBox.getActionCommand() +
                                 "," + siRadioButton.getActionCommand() + "," + noRadioButton.getActionCommand() + "\n");
 
-                    // Cierra el objeto FileWriter
+
                     writer.close();
 
-                    // Borra el contenido de los JTextField
+
                     codigotextField1.setText("");
                     cedulatextField2.setText("");
                     nombrestextField3.setText("");
@@ -63,18 +64,81 @@ public class formulario {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    // Crea un objeto Scanner para leer el archivo de texto
+
                     Scanner scanner = new Scanner(new File("src/binary data.dat"));
 
-                    // Lee la primera línea del archivo y separa los valores por comas
+
                     String[] valores = scanner.nextLine().split(",");
 
-                    // Asigna los valores correspondientes a cada JLabel
-                    textArea1.setText("Codigo: " + (valores[0]) + "\n" + "Cedula: " + valores[1] + "\n" + "Nombres: " + valores[2] + "\n" + "Apellidos: " + valores[3] + "\n"
-                            + "Signo: " + valores[4] + "\n" + "Fecha de nacimiento\n" + "Año: "+ valores[5] + "\n" + "Mes: " + valores[6] + "\n" + "Dia: " + valores[7]
-                            + "Color favorito\n" + valores[8] + "\n" + "Casado: " + valores[9]);
+
+                    textArea1.setText("ESTUDIANTE" + lineaActual + "\n" + "Codigo: " + (valores[0]) + "\n" + "Cedula: " + valores[1] + "\n" + "Nombres: " + valores[2] + "\n" + "Apellidos: " + valores[3] + "\n"
+                            + "Signo: " + valores[4] + "\n" + "Fecha de nacimiento\n" + "Año: "+ valores[5] + "\n" + "Mes: " + valores[6] + "\n" + "Dia: " + valores[7] + "\n"
+                            + "Color favorito\n" + valores[8]);
 
                     // Cierra el objeto Scanner
+                    scanner.close();
+                } catch (FileNotFoundException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+        verSiguienteRegistroButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+
+                    Scanner scanner = new Scanner(new File("src/binary data.dat"));
+
+
+                    for (int i = 1; i < lineaActual; i++) {
+                        if (scanner.hasNextLine()) {
+                            scanner.nextLine();
+                        } else {
+
+                            scanner = new Scanner(new File("src/binary data.dat"));
+                            lineaActual = 1;
+                            break;
+                        }
+                    }
+
+
+                    if (scanner.hasNextLine()) {
+                        String[] valores = scanner.nextLine().split(",");
+
+                        textArea1.setText("ESTUDIANTE " + lineaActual + "\n" + "Codigo: " + (valores[0]) + "\n" + "Cedula: " + valores[1] + "\n" + "Nombres: " + valores[2] + "\n" + "Apellidos: " + valores[3] + "\n"
+                                + "Signo: " + valores[4] + "\n" + "Fecha de nacimiento\n" + "Año: "+ valores[5] + "\n" + "Mes: " + valores[6] + "\n" + "Dia: " + valores[7] + "\n"
+                                + "Color favorito\n" + valores[8]);
+
+                        lineaActual++;
+                    }
+
+                    scanner.close();
+                } catch (FileNotFoundException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+        verAnteriorRegistroButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    if (lineaActual > 1) {
+                        lineaActual--;
+                    }
+
+                    Scanner scanner = new Scanner(new File("src/binary data.dat"));
+
+                    // Lee las líneas del archivo hasta llegar a la línea actual
+                    for (int i = 1; i < lineaActual; i++) {
+                        scanner.nextLine();
+                    }
+
+                    String[] valores = scanner.nextLine().split(",");
+
+                    textArea1.setText("ESTUDIANTE " + lineaActual + "\n" + "Codigo: " + (valores[0]) + "\n" + "Cedula: " + valores[1] + "\n" + "Nombres: " + valores[2] + "\n" + "Apellidos: " + valores[3] + "\n"
+                            + "Signo: " + valores[4] + "\n" + "Fecha de nacimiento\n" + "Año: "+ valores[5] + "\n" + "Mes: " + valores[6] + "\n" + "Dia: " + valores[7] + "\n"
+                            + "Color favorito\n" + valores[8]);
+
                     scanner.close();
                 } catch (FileNotFoundException ex) {
                     ex.printStackTrace();
