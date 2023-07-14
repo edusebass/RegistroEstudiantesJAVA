@@ -31,14 +31,7 @@ public class formulario {
 
     private int lineaActual = 1;
 
-    public void validarColor(){
-        if(ningunoCheckBox.isSelected()){
-            ningunoCheckBox.getActionCommand();
-        }
-        if(rojoCheckBox.isSelected()){
-            rojoCheckBox.getActionCommand()
-        }
-    }
+
 
     public formulario() {
         guardarDatosEnDiscoButton.addActionListener(new ActionListener() {
