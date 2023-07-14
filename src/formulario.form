@@ -70,7 +70,7 @@
           <text value=""/>
         </properties>
       </component>
-      <component id="23703" class="javax.swing.JTextField" binding="textField4" default-binding="true">
+      <component id="23703" class="javax.swing.JTextField" binding="apellidotextField4">
         <constraints>
           <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -134,23 +134,7 @@
           <text value="si"/>
         </properties>
       </component>
-      <component id="6d063" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
-        <constraints>
-          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <model>
-            <item value="año"/>
-            <item value="1999"/>
-            <item value="2000"/>
-            <item value="2001"/>
-            <item value="2002"/>
-            <item value="2003"/>
-            <item value="2004"/>
-          </model>
-        </properties>
-      </component>
-      <component id="c85fe" class="javax.swing.JComboBox" binding="comboBox2" default-binding="true">
+      <component id="c85fe" class="javax.swing.JComboBox" binding="mescomboBox2">
         <constraints>
           <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -172,7 +156,7 @@
           </model>
         </properties>
       </component>
-      <component id="435ed" class="javax.swing.JComboBox" binding="comboBox3" default-binding="true">
+      <component id="435ed" class="javax.swing.JComboBox" binding="diacomboBox3">
         <constraints>
           <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -237,14 +221,6 @@
           <text value="Signo"/>
         </properties>
       </component>
-      <component id="f3cd3" class="javax.swing.JTextField" binding="textField5" default-binding="true">
-        <constraints>
-          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-        </constraints>
-        <properties/>
-      </component>
       <component id="158e2" class="javax.swing.JRadioButton" binding="noRadioButton" default-binding="true">
         <constraints>
           <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
@@ -253,7 +229,7 @@
           <text value="no"/>
         </properties>
       </component>
-      <component id="acdcf" class="javax.swing.JTextPane" binding="textPane1" default-binding="true">
+      <component id="acdcf" class="javax.swing.JTextPane" binding="muestratextPane1">
         <constraints>
           <grid row="3" column="4" row-span="2" col-span="2" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
@@ -283,6 +259,43 @@
         </constraints>
         <properties>
           <text value="Datos registrados"/>
+        </properties>
+      </component>
+      <component id="62ce" class="javax.swing.JComboBox" binding="signocomboBox4">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <model>
+            <item value="Aries"/>
+            <item value="Tauro"/>
+            <item value="Géminis"/>
+            <item value="Cáncer"/>
+            <item value="Leo"/>
+            <item value="Virgo"/>
+            <item value="Libra"/>
+            <item value="Escorpio"/>
+            <item value="Sagitario"/>
+            <item value="Capricornio"/>
+            <item value="Acuario"/>
+            <item value="Piscis"/>
+          </model>
+        </properties>
+      </component>
+      <component id="6d063" class="javax.swing.JComboBox" binding="añocomboBox1">
+        <constraints>
+          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <model>
+            <item value="año"/>
+            <item value="1999"/>
+            <item value="2000"/>
+            <item value="2001"/>
+            <item value="2002"/>
+            <item value="2003"/>
+            <item value="2004"/>
+          </model>
         </properties>
       </component>
     </children>
